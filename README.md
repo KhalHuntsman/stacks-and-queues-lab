@@ -1,101 +1,96 @@
-# Lab: Stacks and Queues  
-**Lab GitHub Repo**: [Stacks and Queues](https://github.com/learn-co-curriculum/stacks-and-queues-lab)
+# Stacks and Queues Lab
 
----
+### Overview
 
-## Overview
-In this lab, you’ll apply **stacks** and **queues** to solve two real-world challenges. First, you’ll implement a **parentheses validator** using a stack—a feature commonly used in compilers or formatting tools. Then, you'll simulate a **customer raffle system** using a queue, where entries are processed in the order received and a winner is selected.
+This project demonstrates the implementation of **custom stack and queue data structures** in Python.  
+It reinforces core data structure concepts such as **LIFO (Last In, First Out)** and **FIFO (First In, First Out)** through practical, test-driven exercises.
 
-By focusing on **LIFO** (last-in, first-out) and **FIFO** (first-in, first-out) behavior, you’ll develop a stronger understanding of foundational data structures used in systems like parsers, schedulers, and task processors.
+The lab includes:
+- A queue system that simulates customer processing and winner selection
+- A stack-based solution for validating balanced parentheses
+- Unit tests that verify correctness and edge-case handling
 
----
+This project focuses on **data structure behavior**, not performance optimizations.
 
-## Task 1: Define the Problem
+### Features
 
-1. Implement a function that validates **balanced parentheses** using a stack.
-2. Create a **queue** that stores customer entries and:
-   - **Selects a random winner**.
-   - **Dequeues up to and including** the winner.
-3. Display the result of both operations clearly in your output.
+- Custom Queue class with enqueue, dequeue, peek, and empty checks
+- Random winner selection with controlled dequeue behavior
+- Stack-based parentheses validation
+- Defensive handling of empty data structures
+- Fully tested using Pytest and unittest
 
-**The Challenge**: Demonstrate your understanding of stack and queue behavior in common technical workflows.
+### Queue Behavior
 
----
+The custom `Queue` class supports:
 
-## Task 2: Determine the Design
+- `enqueue(item)` — add an item to the end of the queue
+- `dequeue()` — remove and return the front item
+- `peek()` — inspect the front item without removing it
+- `is_empty()` — check if the queue is empty
+- `select_and_announce_winner()` — randomly selects a customer and removes all customers up to and including the winner
 
-### Stack Functionality
+The queue follows **FIFO semantics**.
 
-- **File**: `custom_stack.py`
-- **Function**:  
-  - `is_valid_parentheses(s: str) -> bool`  
-  - Returns `True` if the parentheses in the string are balanced.
+### Stack Behavior
 
-### Queue Class Design
+The stack logic is implemented through the function:
 
-- **File**: `custom_queue.py`
-- **Class**: `Queue`
-- **Methods**:
-  - `enqueue(item)`  
-  - `dequeue()`  
-  - `peek()`  
-  - `is_empty()`  
-  - `select_and_announce_winner()` → Randomly selects a winner and dequeues everyone up to and including that customer.
+- `is_valid_parentheses(s: str) -> bool`
 
----
+This function:
+- Uses a stack to track opening brackets
+- Ensures parentheses are balanced and properly nested
+- Supports `()`, `{}`, and `[]`
+- Returns `True` only if the entire string is valid
 
-## Task 3: Develop, Test, and Refine the Code
+### Technologies & Tools Used
 
-### Set Up
+#### Language
+- Python 3
 
-#### Fork and Clone
-1. Go to the provided **GitHub repository link**.  
-2. Fork the repository to your GitHub account.  
-3. Clone the forked repository to your local machine.
+#### Testing
+- Pytest
+- unittest
 
-#### Open and Run
-1. Open the project in your Python-friendly IDE (VSCode, PyCharm, etc.).  
+#### Tooling
+- Git & GitHub
 
-### Implementation Details
+### File Structure
 
-1. **Starter code uses `pass`**:
-   - You’ll see `pass` in method bodies—this is a Python placeholder.
-   - Replace it with your actual code to make each method work.
+All paths are listed relative to the project root.
 
-2. **Build each file**:
-   - Implement `Queue` methods as described above.
-   - Write the stack validator function for balanced parentheses.
+- stacks-and-queues-lab/custom_queue.py
+- stacks-and-queues-lab/custom_stack.py
+- stacks-and-queues-lab/test_structures.py
+- stacks-and-queues-lab/README.md
 
-3. **Run Tests**:
-   - Execute the provided test file with:
-     ```bash
-     python test_structures.py
-     ```
-   - Ensure all tests pass before submission.
+### Key Files Explained
 
-4. **Push and Merge**:
-   - Commit your work regularly.
-   - Push to your feature branch.
-   - Open a Pull Request (PR).
-   - Merge to `main` after review.
+#### custom_queue.py
+- Defines a Queue class using a list-based implementation
+- Implements FIFO behavior
+- Includes a random winner selection feature that dequeues items correctly
 
----
+#### custom_stack.py
+- Implements stack logic for validating balanced parentheses
+- Uses a list as a stack to track opening symbols
 
-## Task 4: Document and Maintain
+#### test_structures.py
+- Contains unit tests for both queue and stack functionality
+- Verifies correct behavior, edge cases, and return values
 
-### Best Practice Documentation Steps
+### Testing Notes
+- Tests validate both normal and edge-case behavior
+- Queue and stack logic are tested independently
+- No external dependencies are required
 
-- **Comment your logic**: Especially around recursive or loop-based behavior.
-- **Explain your thinking** in your function definitions.
-- **README**: Make sure your repo’s README includes how to run the project.
-- **Clean Up**:
-  - Remove debug prints.
-  - Ensure your `.gitignore` ignores `.pyc`, `__pycache__`, etc.
+Run tests with:
+- pytest
 
----
+### License
+Educational use only.  
+Intended for learning fundamental stack and queue data structures in Python.
 
-## Submission
-Once your lab is complete and all tests are passing:
-
-- Push your code to GitHub.
-- Submit the link to your repo through **Canvas using CodeGrade**.
+### Additional notes:
+- Project passed through ChatGPT for syntax and grammatical error checking and for writing this README.md. Everything was double checked for accuracy and readability prior to submission.
